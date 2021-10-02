@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books Library task</title>
+  <link rel="stylesheet" href="./assets/style/global.css">
+</head>
+
+<body>
+  <main>
+    <section>
+      <aside>
+        <button id="add-book">Add new book</button>
+        <div id="modal">
+          <div>
+            <div class="header">
+              <h1>Book details</h1>
+              <hr>
+            </div>
+            <div class="body">
+              <form id="add-book-form">
+                <div class="form-data">
+                  <label for="form-title">Title</label>
+                  <input required minlength="2" type="text" name="title" id="form-title">
+                </div>
+                <div class="form-data">
+                  <label for="form-author-name">Author</label>
+                  <input required minlength="2" type="text" name="author" id="form-author-name">
+                </div>
+                <div class="form-data mb-1">
+                  <label for="form-img">Image Link</label>
+                  <input required type="file" name="image" id="form-img" accept="image/*">
+                </div>
+                <div class="footer">
+                  <hr>
+                  <div>
+                    <button type="submit" id="submit-form">Add</button>
+                    <button id="close-form">Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div id="container"></div>
+    </section>
+  </main>
+
+  <script src="./assets/scripts/main.js"></script>
+</body>
+</html>

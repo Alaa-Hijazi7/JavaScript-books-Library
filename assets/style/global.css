@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: arial, sans-serif;
+}
+body {
+  background-color: #462749;
+}
+
+section {
+  max-width: 1500px;
+  margin: 1rem auto;
+}
+
+#add-book {
+  z-index: 1;
+  background-color: #673ab7;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+.form-data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.form-data:not(:first-child) {
+  margin-top: 1rem;
+}
+.mb-1 {
+  margin-bottom: 1rem;
+}
+.form-data label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.form-data input {
+  background-color: #F2D1C9;
+  padding: 0.4rem 0.7rem;
+  border: 0;
+  border-radius: 4px;
+  color: #462749;
+  outline: 2px solid transparent;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.form-data input:hover {
+  transition: all 0.2s;
+  outline: 1px solid #a900ff;
+}
+.form-data input:focus {
+  transition: all 0.2s;
+  outline: 3px solid #a900ff;
+}
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  background-color: #8332AC;
+  padding: 0.8rem 1rem;
+  color: #BAD1CD;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+button:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+  transition: opacity 0.2s;
+}
+#modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #00000085;
+  z-index: 999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes openModal {
+  from {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+#modal > div {
+  margin: 0.5rem;
+  color: #fff;
+  min-height: 400px;
+  width: 100%;
+  max-width: 500px;
+  background: #8332AC;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: openModal 0.2s ease;
+}
+#modal > div .body {
+  padding: 1rem;
+  max-height: 270px;
+  overflow: auto;
+}
+#modal > div .header h1 {
+  padding: 1rem;
+}
+#modal > div .footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+}
+#modal > div .footer > div {
+  padding: 1rem;
+  border-radius: 0 0 6px 6px;
+  background: #8332ac;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+#container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.book-div {
+  position: relative;
+  color: #FFECD1;
+  background-color: #8332AC;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: border 0.2s;
+  border-inline-end: 1px solid #78290f00;
+}
+.book-div > div {
+  padding-inline-start: 1rem;
+  margin-bottom: 1rem;
+}
+.book-div h2 {
+  color: #fff;
+}
+.book-div:hover {
+  transition: border 0.2s;
+  border-inline-end: 15px solid #78290F;
+} 
+.book-div h2:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.book-div img {
+  border-radius: 8px 0 0 8px;
+  user-select: none;
+  width: 90px;
+  height: 77px;
+  object-fit: cover;
+}
+.book-div .author {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+.book-div .author img {
+  cursor: pointer;
+  width: unset;
+  height: 30px;
+}
+.book-div .author a {
+  cursor: pointer;
+}
+.book-div .author a:hover {
+  text-decoration: underline;
+}
