@@ -1,22 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  font-family: arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 body {
-  background-color: #462749;
+  background-color: #f8f2eb;
 }
-
 section {
   max-width: 1500px;
   margin: 1rem auto;
 }
+header nav {
+  box-shadow: 0 -1px 20px 0px #2b1811;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+header nav h1 {
+  cursor: pointer;
+  font-family: "Ephesis", cursive;
+  color: #2b1811;
+  font-size: 2rem;
+}
+header nav .search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  align-items: center;
+  position: relative;
+}
+header nav .search-bar > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+header nav .search-bar img {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+}
+header nav .search-bar input {
+  background-color: #ffffff;
+  border: 0;
+  border-radius: 4px;
+  color: #2b1811;
+  outline: 2px solid transparent;
+  font-size: 1rem;
+  padding: 0.4rem;
+  width: 100%;
+  padding-inline-start: 26px;
+  transition: all 0.2s;
+}
 
+header nav .search-bar input:hover {
+  transition: all 0.2s;
+  outline: 1px solid #2b1811;
+}
+header nav .search-bar input:focus {
+  transition: all 0.2s;
+  outline: 3px solid #2b1811;
+}
 #add-book {
   z-index: 1;
-  background-color: #673ab7;
+  background-color: #d9aa63;
   position: fixed;
   bottom: 15px;
   right: 15px;
@@ -39,30 +95,30 @@ section {
   font-weight: bold;
 }
 .form-data input {
-  background-color: #F2D1C9;
+  background-color: #ffffff;
   padding: 0.4rem 0.7rem;
   border: 0;
   border-radius: 4px;
-  color: #462749;
+  color: #2b1811;
   outline: 2px solid transparent;
   font-size: 1rem;
   transition: all 0.2s;
 }
 .form-data input:hover {
   transition: all 0.2s;
-  outline: 1px solid #a900ff;
+  outline: 1px solid #2b1811;
 }
 .form-data input:focus {
   transition: all 0.2s;
-  outline: 3px solid #a900ff;
+  outline: 3px solid #2b1811;
 }
 button {
   cursor: pointer;
   border: 0;
-  border-radius: 4px;
-  background-color: #8332AC;
+  border-radius: 100px;
+  background-color: #d9aa63;
   padding: 0.8rem 1rem;
-  color: #BAD1CD;
+  color: #2b1811;
   font-weight: bold;
   font-size: 1rem;
   transition: opacity 0.2s;
@@ -96,11 +152,11 @@ button:hover {
 }
 #modal > div {
   margin: 0.5rem;
-  color: #fff;
+  color: #2b1811;
   min-height: 400px;
   width: 100%;
   max-width: 500px;
-  background: #8332AC;
+  background-color: #f8f2eb;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -124,63 +180,79 @@ button:hover {
 #modal > div .footer > div {
   padding: 1rem;
   border-radius: 0 0 6px 6px;
-  background: #8332ac;
+  background: #f8f2eb;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
 #container {
   display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  gap: 3rem;
 }
 .book-div {
+  height: fit-content;
+  width: 400px;
   position: relative;
-  color: #FFECD1;
-  background-color: #8332AC;
+  color: #2b1811;
   display: flex;
   align-items: center;
   border-radius: 8px;
-  transition: border 0.2s;
-  border-inline-end: 1px solid #78290f00;
 }
-.book-div > div {
-  padding-inline-start: 1rem;
-  margin-bottom: 1rem;
+.book-div:hover .book-image {
+  transform: rotate(0deg);
+  transition: transform 0.2s;
 }
 .book-div h2 {
-  color: #fff;
+  font-family: "Libre Caslon Text";
 }
-.book-div:hover {
-  transition: border 0.2s;
-  border-inline-end: 15px solid #78290F;
-} 
+.book-div > div {
+  padding-inline-start: 20px;
+  margin-bottom: 1rem;
+}
 .book-div h2:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-.book-div img {
+.book-div .author img {
+  cursor: pointer;
   border-radius: 8px 0 0 8px;
   user-select: none;
-  width: 90px;
-  height: 77px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
 }
 .book-div .author {
   display: flex;
   align-items: center;
-  position: absolute;
-  bottom: 0;
-}
-.book-div .author img {
-  cursor: pointer;
-  width: unset;
-  height: 30px;
+  font-family: "Montserrat";
+  color: #AAA4A1;
 }
 .book-div .author a {
   cursor: pointer;
 }
 .book-div .author a:hover {
   text-decoration: underline;
+}
+.book-image {
+  user-select: none;
+  width: fit-content;
+  max-width: 125px;
+  max-height: 290px;
+  border-radius: 4px;
+  box-shadow: 8px 6px 19px 4px rgba(0, 0, 0, 0.34);
+  transform: rotate(-2.09deg);
+  transition: transform 0.2s;
+}
+.book-div .category {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 13px;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  background-color: #d9aa63;
+  color: #ffff;
 }
