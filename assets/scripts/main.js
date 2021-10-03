@@ -1,27 +1,52 @@
-const books = [
-  {
-    title: "book1",
+const books = [{
+  category: "Fantasy",  
+  title: "One Hundred Years of Solitude",
     author: {
-      name: "John Doe",
+      name: "Gabriel Garcia Marquez",
       image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
     },
-    image: "https://images.freeimages.com/images/large-previews/7ba/book-1421245.jpg"
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
   }, {
-    title: "book2",
+    category: "Historical Fiction",
+    title: "The Great Gatsby",
      author: {
-      name: "Alaa Hijazi",
+      name: "F. Scott Fitzgerald",
       image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
     },
-    image: "https://images.freeimages.com/images/large-previews/d0f/grandmother-s-cookbook-1324977.jpg"
+    image: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1607103555-51wmv-2LokL.jpg?crop=1xw:0.993xh;center,top&resize=480:*"
   }, {
-    title: "book2",
+    category: "Horror",
+    title: "Moby Dick",
      author: {
-      name: "Alaa Hijazi",
+      name: "Herman Melville",
       image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
     },
-    image: "https://images.freeimages.com/images/large-previews/d0f/grandmother-s-cookbook-1324977.jpg"
+    image: "https://www.finebooksmagazine.com/sites/default/files/FBC2021autumn-cover-no-barcode.jpg"
+  }, {
+    category: "Fantasy",
+    title: "Moby Dick",
+     author: {
+      name: "Herman Melville",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1607103555-51wmv-2LokL.jpg?crop=1xw:0.993xh;center,top&resize=480:*"
+  }, {
+    category: "Historical Fiction",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
   }
-]
+];
+
+const categories = [
+  "Action and Adventure", "Classics", 
+  "Comic Book or Graphic Novel", "Detective and Mystery",
+  "Fantasy", "Historical Fiction", "Horror", "Literary Fiction",
+  "Romance", "Science Fiction (Sci-Fi)", "Short Stories"
+];
 
 const addButton = document.getElementById("add-book"),
   modla = document.getElementById("modal"),
@@ -32,16 +57,49 @@ const addButton = document.getElementById("add-book"),
   img = document.getElementById("form-img"),
   authorName = document.getElementById("form-author-name"),
   authorImage = document.getElementById("form-author-image"),
-  submitForm = document.getElementById("submit-form");
+  submitForm = document.getElementById("submit-form"),
+  categorySelect = document.getElementById("category"),
+  searchForm = document.getElementById("search-bar"),
+  formCategory = document.getElementById("form-category");
 
 function addBooks() {
   container.innerHTML = "";
+
   books.forEach(book => {
     const divElement = document.createElement("div");
     container.appendChild(divElement);
     divElement.classList.add("book-div");
     divElement.innerHTML = `
-      <img src=${book.image} alt=${book.title}>
+      ${book.category && `<span class="category">${book.category}</span>`}
+      <img src=${book.image} alt=${book.title} class="book-image">
+      <div>
+        <h2>${book.title}</h2>
+        <div class="author">
+          <img src=${book.author.image} alt=${book.author.name}>
+          <a>${book.author.name}</a>
+        </div>
+      </div>
+    `;
+  });
+  categories.forEach(category => {
+    const optionElement = document.createElement("option");
+    categorySelect.appendChild(optionElement);
+    optionElement.innerHTML = category
+  });
+}
+
+function searchBooks(a, b) {
+  let newArray = books.filter(book => b ?  book.category === b && book.title.includes(a) : book.title.includes(a) || book.category === b);
+  if (newArray) container.innerHTML = "";
+
+
+  newArray.forEach(book => {
+    const divElement = document.createElement("div");
+    container.appendChild(divElement);
+    divElement.classList.add("book-div");
+    divElement.innerHTML = `
+      ${book.category && `<span class="category">${book.category}</span>`}
+      <img src=${book.image} alt=${book.title} class="book-image">
       <div>
         <h2>${book.title}</h2>
         <div class="author">
@@ -53,9 +111,24 @@ function addBooks() {
   });
 }
 
+searchForm.addEventListener("submit", event => {
+  event.preventDefault();
+  searchBooks(event.target[0].value, event.target[1].value);
+})
+
 window.onload = addBooks();
 
-addButton.addEventListener("click", () => modla.style.display = "flex");
+addButton.addEventListener("click", () => {
+  modla.style.display = "flex";
+
+  formCategory.innerHTML = "";
+
+  categories.forEach(category => {
+    const optionElement = document.createElement("option");
+    formCategory.appendChild(optionElement);
+    optionElement.innerHTML = category;
+  });
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -64,19 +137,20 @@ form.addEventListener("submit", (e) => {
   reader.readAsDataURL(img.files[0]);
   reader.onload = () => {
     books.push({ 
+      category: formCategory.value,
       title: title.value, 
       author: { name: authorName.value, image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png" },
       image: reader.result
     });
+
     addBooks();
+
     modla.style.display = "none";
     title.value = "";
     img.value = "";
     authorName.value = "";
   };
   reader.onerror = () => console.log;
-
-
 });
 
 closeForm.addEventListener("click", () => {
