@@ -38,6 +38,70 @@ const books = [{
       image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
     },
     image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
+  }, {
+    category: "Horror",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
+  }, {
+    category: "Action and Adventure",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
+  }, {
+    category: "Classics",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
+  }, {
+    category: "Comic Book or Graphic Novel",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
+  }, {
+    category: "Detective and Mystery",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
+  }, {
+    category: "Fantasy",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
+  }, {
+    category: "Historical Fiction",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
+  }, {
+    category: "Romance",
+    title: "Fantasy",
+     author: {
+      name: "F. Scott Fitzgerald",
+      image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
+    },
+    image: "https://www.basicbooks.com/wp-content/uploads/2021/02/9781541697454.jpg?fit=480%2C720"
   }
 ];
 
