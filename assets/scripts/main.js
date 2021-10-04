@@ -21,7 +21,7 @@ const books = [{
       name: "Herman Melville",
       image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
     },
-    image: "https://www.finebooksmagazine.com/sites/default/files/FBC2021autumn-cover-no-barcode.jpg"
+    image: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1607103555-51wmv-2LokL.jpg?crop=1xw:0.993xh;center,top&resize=480:*"
   }, {
     category: "Fantasy",
     title: "Moby Dick",
@@ -65,7 +65,9 @@ const addButton = document.getElementById("add-book"),
 function addBooks() {
   container.innerHTML = "";
 
-  books.forEach(book => {
+  let localStrogeBooks = JSON.parse(localStorage.getItem("books")) || books;
+
+  localStrogeBooks.forEach(book => {
     const divElement = document.createElement("div");
     container.appendChild(divElement);
     divElement.classList.add("book-div");
@@ -75,8 +77,7 @@ function addBooks() {
       <div>
         <h2>${book.title}</h2>
         <div class="author">
-          <img src=${book.author.image} alt=${book.author.name}>
-          <a>${book.author.name}</a>
+          <a>by ${book.author.name}</a>
         </div>
       </div>
     `;
@@ -89,7 +90,8 @@ function addBooks() {
 }
 
 function searchBooks(a, b) {
-  let newArray = books.filter(book => b ?  book.category === b && book.title.includes(a) : book.title.includes(a) || book.category === b);
+  let localStrogeBooks = JSON.parse(localStorage.getItem("books")) || books;
+  let newArray = localStrogeBooks.filter(book => b ?  book.category === b && book.title.includes(a) : book.title.includes(a) || book.category === b);
   if (newArray) container.innerHTML = "";
 
 
@@ -103,7 +105,6 @@ function searchBooks(a, b) {
       <div>
         <h2>${book.title}</h2>
         <div class="author">
-          <img src=${book.author.image} alt=${book.author.name}>
           <a>${book.author.name}</a>
         </div>
       </div>
@@ -114,7 +115,12 @@ function searchBooks(a, b) {
 searchForm.addEventListener("submit", event => {
   event.preventDefault();
   searchBooks(event.target[0].value, event.target[1].value);
-})
+});
+
+categorySelect.addEventListener("change", event => {
+  event.preventDefault();
+  searchBooks("", event.target.value);
+});
 
 window.onload = addBooks();
 
@@ -136,13 +142,18 @@ form.addEventListener("submit", (e) => {
   const reader = new FileReader();
   reader.readAsDataURL(img.files[0]);
   reader.onload = () => {
+    localStorage.setItem("books", JSON.stringify([...books, { 
+      category: formCategory.value,
+      title: title.value, 
+      author: { name: authorName.value, image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png" },
+      image: reader.result
+    }]));
     books.push({ 
       category: formCategory.value,
       title: title.value, 
       author: { name: authorName.value, image: "https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png" },
       image: reader.result
     });
-
     addBooks();
 
     modla.style.display = "none";
