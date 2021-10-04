@@ -247,7 +247,7 @@ button:hover {
 .book-image {
   user-select: none;
   width: fit-content;
-  min-width: 117px;
+  min-width: 150px;
   min-height: 217px;
   border: 8px solid #f8f2eb;
   transform: translate(23px, 33px);
