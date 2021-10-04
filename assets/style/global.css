@@ -282,3 +282,11 @@ button:hover {
   outline: 3px solid #2b1811;
   transition: outline 0.2s;
 }
+@media screen and (max-width: 430px) {
+  section {
+    margin-top: 10rem;
+  }
+  #container {
+    margin: 1rem;
+  }
+}
