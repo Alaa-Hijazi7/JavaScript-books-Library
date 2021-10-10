@@ -39,7 +39,7 @@ header nav h1 {
 header nav .search-bar {
   display: flex;
   flex-wrap: wrap;
-  width: 430px;
+  width: 500px;
   gap: 5px;
   align-items: center;
   position: relative;
@@ -51,13 +51,25 @@ header nav .search-bar > div {
   gap: 5px;
 }
 header nav .search-bar #category {
+  padding: 0 0.5rem;
   height: 32px;
-  width: 150px;
+  width: 200px;
   border-radius: 4px;
   color: #2b1811;
-  border-color: transparent;
-  background-color: transparent;
+  background-color: #ffffff;
   cursor: pointer;
+  font-weight: bold;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+header nav .search-bar #category:hover {
+  border: 1px solid #2b1811;
+  transition: all 0.2s;
+}
+header nav .search-bar #category:focus {
+  outline: 3px solid #2b1811;
+  font-weight: bold;
+  transition: all 0.2s;
 }
 header nav .search-bar img {
   position: absolute;
@@ -213,7 +225,18 @@ button:hover {
   margin-top: 5rem;
   gap: 3rem;
 }
+@keyframes bookDivAnimation {
+  0% {
+    transform: translateY(20px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 .book-div {
+  animation: bookDivAnimation 1s ease;
   height: fit-content;
   width: max(450px, min(25%, 960px));
   height: 200px;
@@ -224,6 +247,14 @@ button:hover {
   border-radius: 8px;
   background-color: #cbb5e2;
   color: #ffffff;
+  transform: translateY(0);
+  box-shadow: 0 0 0 #d3a56130;
+  transition: all 0.2s ease;
+}
+.book-div:hover {
+  transform: translateY(-5px);
+  box-shadow: 1px 10px 10px #d3a56130;
+  transition: all 0.2s ease;
 }
 .book-div h2 {
   font-family: "Roboto", sans-serif;
@@ -247,16 +278,15 @@ button:hover {
 .book-image {
   user-select: none;
   width: fit-content;
-  min-width: 150px;
-  min-height: 217px;
   border: 8px solid #f8f2eb;
   transform: translate(23px, 33px);
   background-color: #f8f2eb;
+  min-width: 150px;
+  min-height: 217px;
   max-width: 150px;
   max-height: 290px;
   object-fit: cover;
 }
-
 .book-div .category {
   position: absolute;
   top: 5px;

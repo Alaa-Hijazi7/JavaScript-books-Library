@@ -126,12 +126,9 @@ const addButton = document.getElementById("add-book"),
   searchForm = document.getElementById("search-bar"),
   formCategory = document.getElementById("form-category");
 
-function addBooks() {
-  container.innerHTML = "";
 
-  let localStrogeBooks = JSON.parse(localStorage.getItem("books")) || books;
-
-  localStrogeBooks.forEach(book => {
+function forEachDivs(data) {
+  data.forEach(book => {
     const divElement = document.createElement("div");
     container.appendChild(divElement);
     divElement.classList.add("book-div");
@@ -146,6 +143,13 @@ function addBooks() {
       </div>
     `;
   });
+}
+
+function addBooks() {
+  container.innerHTML = "";
+
+  let localStrogeBooks = JSON.parse(localStorage.getItem("books")) || books;
+  forEachDivs(localStrogeBooks);
   categories.forEach(category => {
     const optionElement = document.createElement("option");
     categorySelect.appendChild(optionElement);
@@ -158,22 +162,7 @@ function searchBooks(a, b) {
   let newArray = localStrogeBooks.filter(book => b ?  book.category === b && book.title.includes(a) : book.title.includes(a) || book.category === b);
   if (newArray) container.innerHTML = "";
 
-
-  newArray.forEach(book => {
-    const divElement = document.createElement("div");
-    container.appendChild(divElement);
-    divElement.classList.add("book-div");
-    divElement.innerHTML = `
-      ${book.category && `<span class="category">${book.category}</span>`}
-      <img src=${book.image} alt=${book.title} class="book-image">
-      <div>
-        <h2>${book.title}</h2>
-        <div class="author">
-          <a>${book.author.name}</a>
-        </div>
-      </div>
-    `;
-  });
+  forEachDivs(newArray);
 }
 
 searchForm.addEventListener("submit", event => {
