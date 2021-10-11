@@ -227,8 +227,8 @@ button:hover {
 }
 @keyframes bookDivAnimation {
   0% {
-    transform: translateY(20px);
-    opacity: 0.2;
+    transform: translateY(50px);
+    opacity: 0;
   }
   100% {
     transform: translateY(0);
@@ -236,7 +236,6 @@ button:hover {
   }
 }
 .book-div {
-  animation: bookDivAnimation 1s ease;
   height: fit-content;
   width: max(450px, min(25%, 960px));
   height: 200px;
@@ -247,9 +246,10 @@ button:hover {
   border-radius: 8px;
   background-color: #cbb5e2;
   color: #ffffff;
-  transform: translateY(0);
   box-shadow: 0 0 0 #d3a56130;
   transition: all 0.2s ease;
+  animation: bookDivAnimation ease;
+  animation-duration: 1s;
 }
 .book-div:hover {
   transform: translateY(-5px);

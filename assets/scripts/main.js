@@ -128,10 +128,11 @@ const addButton = document.getElementById("add-book"),
 
 
 function forEachDivs(data) {
-  data.forEach(book => {
+  data.forEach((book, index) => {
     const divElement = document.createElement("div");
     container.appendChild(divElement);
     divElement.classList.add("book-div");
+    divElement.style.animationDuration = `0.${index + 1}s`
     divElement.innerHTML = `
       ${book.category && `<span class="category">${book.category}</span>`}
       <img src=${book.image} alt=${book.title} class="book-image">
