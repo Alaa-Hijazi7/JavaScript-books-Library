@@ -124,7 +124,8 @@ const addButton = document.getElementById("add-book"),
   submitForm = document.getElementById("submit-form"),
   categorySelect = document.getElementById("category"),
   searchForm = document.getElementById("search-bar"),
-  formCategory = document.getElementById("form-category");
+  formCategory = document.getElementById("form-category"),
+  searchInput = document.getElementById("search-input");
 
 
 function forEachDivs(data) {
@@ -175,6 +176,8 @@ categorySelect.addEventListener("change", event => {
   event.preventDefault();
   searchBooks("", event.target.value);
 });
+
+searchInput.addEventListener("input", event => searchBooks(event.target.value))
 
 window.onload = addBooks();
 
